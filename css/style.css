@@ -1263,8 +1263,12 @@ width: 100%;
     border-color: #09c372;
 }
 
-.input-control.greska input {
+.input-control.greska input,
+.input-control.greska .nice-select,
+.input-control.greska textarea {
     border-color: #ff3860;
+    border: 2px solid #ff0000 !important; 
+    background-color: #fff8f8; 
 }
 
 .input-control .greska {
@@ -1274,6 +1278,7 @@ width: 100%;
     margin-top: 0px;  
     margin-bottom: 12px; 
     display: block;
+
 }
 
 .footer_section.footer-border {
