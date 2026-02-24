@@ -277,6 +277,43 @@ $(document).ready(function() {
 
 
 
+$(document).ready(function() {
+    const counters = document.querySelectorAll('.counter');
+    const speed = 350; 
+
+    const startCounters = () => {
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const inc = target / speed;
+
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + inc);
+                    setTimeout(updateCount, 15);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            updateCount();
+        });
+    };
+
+    
+    let animated = false;
+    $(window).scroll(function() {
+        if ($('.stats_section').length) {
+            let top_of_element = $('.stats_section').offset().top;
+            let bottom_of_screen = $(window).scrollTop() + $(window).innerHeight();
+
+            if (bottom_of_screen > top_of_element && !animated) {
+                startCounters();
+                animated = true;
+            }
+        }
+    });
+});
+
 
 
 
@@ -821,6 +858,10 @@ $(document).ready(function() {
     $(document).on('click', '.close-modal', function() { $('#foodModal').hide(); });
     $(window).on('click', function(e) { if (e.target.id === "foodModal") $('#foodModal').hide(); });
 });
+
+
+
+
 
 
 
